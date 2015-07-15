@@ -1,12 +1,17 @@
 buildscript {
     repositories {
-        maven { url 'https://repo.spring.io/libs-release' }
         mavenLocal()
         mavenCentral()
+        maven { url 'http://repo.spring.io/libs-release' }
     }
+
     dependencies {
-        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE')
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE')
     }
+}
+
+plugins {
+    id 'org.asciidoctor.convert' version '1.5.2'
 }
 
 apply plugin: 'groovy'
@@ -21,16 +26,41 @@ jar {
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url 'https://repo.spring.io/libs-release' }
+    maven { url 'http://repo.spring.io/libs-release' }
+    maven { url 'http://repo.springsource.org/plugins-release' }
 }
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compile 'org.codehaus.groovy:groovy-all:2.2.1'
+    compile 'org.codehaus.groovy:groovy-all:2.2.2'
     compile 'com.h2database:h2'
+
+    testCompile 'org.spockframework:spock-core'
+    testCompile 'org.spockframework:spock-spring'
+    testCompile 'org.springframework:spring-test'
+    testCompile 'junit:junit'
+    testCompile 'org.springframework.restdocs:spring-restdocs-core:0.1.0.BUILD-SNAPSHOT'
 }
 
+ext {
+    generatedDocumentation = file('build/generated-snippets')
+}
+
+test {
+    systemProperty 'org.springframework.restdocs.outputDir', generatedDocumentation
+    outputs.dir generatedDocumentation
+}
+
+asciidoctor {
+    sourceDir 'src/main/asciidoc'
+    attributes 'generated': generatedDocumentation
+    inputs.dir generatedDocumentation
+    dependsOn test
+}
+
+task stage(dependsOn: ['bootRepackage'])
+
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.2.1'
 }

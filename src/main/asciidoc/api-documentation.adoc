@@ -1,0 +1,45 @@
+= Example REST Web Service API Guide
+:doctype: book
+:toc:
+:sectanchors:
+:sectlinks:
+:toclevels: 4
+:source-highlighter: highlightjs
+
+
+[[page-title]]
+== Persons
+
+The Persons resources is used to create and list persons
+
+[[person-list]]
+=== List persons
+A `GET` request will list all of the service's persons.
+
+==== Example request
+include::{generated}/person-list-example/curl-request.adoc[]
+
+==== Example response
+include::{generated}/person-list-example/http-response.adoc[]
+
+
+[[person-by-id]]
+=== Get one person by id
+Retrieves 1 specific person by their id.
+
+==== Example request
+include::{generated}/person-by-id-example/curl-request.adoc[]
+
+==== Example response
+include::{generated}/person-by-id-example/http-response.adoc[]
+
+
+[[person-list-by-lastname]]
+=== Get person(s) by their last name
+Retrieves one or more persons by the last name
+
+==== Example request
+include::{generated}/person-list-by-lastname/curl-request.adoc[]
+
+==== Example response
+include::{generated}/person-list-by-lastname/http-response.adoc[]

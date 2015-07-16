@@ -1,12 +1,9 @@
 buildscript {
     repositories {
-        mavenLocal()
         mavenCentral()
-        maven { url 'http://repo.spring.io/libs-release' }
     }
-
     dependencies {
-        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE')
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE'
     }
 }
 
@@ -26,21 +23,20 @@ jar {
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url 'http://repo.spring.io/libs-release' }
-    maven { url 'http://repo.springsource.org/plugins-release' }
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'org.codehaus.groovy:groovy-all:2.2.2'
-    compile 'com.h2database:h2'
+    compile 'com.h2database:h2:1.3.175'
 
     testCompile 'org.spockframework:spock-core'
     testCompile 'org.spockframework:spock-spring'
     testCompile 'org.springframework:spring-test'
     testCompile 'junit:junit'
-    testCompile 'org.springframework.restdocs:spring-restdocs-core:0.1.0.BUILD-SNAPSHOT'
+    testCompile 'org.springframework.restdocs:spring-restdocs:1.0.0.BUILD-SNAPSHOT'
 }
 
 ext {
@@ -61,6 +57,13 @@ asciidoctor {
 
 task stage(dependsOn: ['bootRepackage'])
 
+jar {
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}/html5") {
+        into 'static/docs'
+    }
+}
+
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
+    gradleVersion = '2.3'
 }

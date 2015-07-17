@@ -75,6 +75,17 @@ include::{generated}/get-hobbies-by-name/http-response.adoc[]
 [[resources-personalhobby]]
 == Personal Hobbies
 
+[[get-all-personalhobbies]]
+=== List all personal hobbies
+Retrieves all personal hobbies
+
+==== Example request
+include::{generated}/get-all-personalhobbies/curl-request.adoc[]
+
+==== Example response
+include::{generated}/get-all-personalhobbies/http-response.adoc[]
+
+
 [[get-personalhobbies-by-name]]
 === Get personal hobby/hobbies by its name
 Retrieves personal hobby/hobbies by its name
@@ -87,11 +98,22 @@ include::{generated}/get-personalhobbies-by-name/http-response.adoc[]
 
 
 [[get-personalhobbies-by-hobbyid]]
-=== Get personal hobby/hobbies by its id
-Retrieves personal hobby/hobbies by its id
+=== Get personal hobby/hobbies by hobby id
+Retrieves personal hobby/hobbies by hobby id
 
 ==== Example request
 include::{generated}/get-personalhobbies-by-hobbyid/curl-request.adoc[]
 
 ==== Example response
 include::{generated}/get-personalhobbies-by-hobbyid/http-response.adoc[]
+
+
+[[get-personalhobbies-by-personid]]
+=== Get personal hobby/hobbies by person id
+Retrieves personal hobby/hobbies by person id
+
+==== Example request
+include::{generated}/get-personalhobbies-by-personid/curl-request.adoc[]
+
+==== Example response
+include::{generated}/get-personalhobbies-by-personid/http-response.adoc[]

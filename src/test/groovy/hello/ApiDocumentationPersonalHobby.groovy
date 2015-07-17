@@ -72,6 +72,15 @@ class ApiDocumentationPersonalHobby extends Specification {
         response.andDo(document('get-all-personalhobbies'))
     }
 
+    void 'get all personal hobbies with details'(){
+        when:
+        ResultActions response = mockMvc.perform(get('/personalHobbies?projection=personalHobbyDetails'))
+
+        then:
+        response.andExpect(status().isOk())
+        response.andDo(document('get-all-personalhobbies-with-details'))
+    }
+
     void 'get personal hobby/hobbies by hobby name'(){
         when:
         ResultActions response = mockMvc.perform(get('/personalHobbies/search/findByHobbyName?hobbyName=running'))

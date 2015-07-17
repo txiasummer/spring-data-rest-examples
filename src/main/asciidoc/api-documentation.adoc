@@ -43,3 +43,55 @@ include::{generated}/person-list-by-lastname/curl-request.adoc[]
 
 ==== Example response
 include::{generated}/person-list-by-lastname/http-response.adoc[]
+
+'''
+
+[[resources-hobby]]
+== Hobbies
+
+[[get-hobby-by-id]]
+=== Get hobby by id
+Retrieves one specific hobby by id
+
+==== Example request
+include::{generated}/get-hobby-by-id/curl-request.adoc[]
+
+==== Example response
+include::{generated}/get-hobby-by-id/http-response.adoc[]
+
+
+[[get-hobby-by-name]]
+=== Get hobby by its name
+Retrieves hobby/hobbies by its name
+
+==== Example request
+include::{generated}/get-hobbies-by-name/curl-request.adoc[]
+
+==== Example response
+include::{generated}/get-hobbies-by-name/http-response.adoc[]
+
+'''
+
+[[resources-personalhobby]]
+== Personal Hobbies
+
+[[get-personalhobbies-by-name]]
+=== Get personal hobby/hobbies by its name
+Retrieves personal hobby/hobbies by its name
+
+==== Example request
+include::{generated}/get-personalhobbies-by-name/curl-request.adoc[]
+
+==== Example response
+include::{generated}/get-personalhobbies-by-name/http-response.adoc[]
+
+
+[[get-personalhobbies-by-hobbyid]]
+=== Get personal hobby/hobbies by its id
+Retrieves personal hobby/hobbies by its id
+
+==== Example request
+include::{generated}/get-personalhobbies-by-hobbyid/curl-request.adoc[]
+
+==== Example response
+include::{generated}/get-personalhobbies-by-hobbyid/http-response.adoc[]

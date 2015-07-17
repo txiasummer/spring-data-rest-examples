@@ -63,9 +63,18 @@ class ApiDocumentationPersonalHobby extends Specification {
         personalHobbyRepository.save([personalHobby1, personalHobby2, personalHobby3, personalHobby4, personalHobby5, personalHobby6])
     }
 
+    void 'get all personal hobbies'(){
+        when:
+        ResultActions response = mockMvc.perform(get('/personalHobbies'))
+
+        then:
+        response.andExpect(status().isOk())
+        response.andDo(document('get-all-personalhobbies'))
+    }
+
     void 'get personal hobby/hobbies by hobby name'(){
         when:
-        ResultActions response = mockMvc.perform(get('/personalHobbies/search/findByHobbyName?hobbyName=piano'))
+        ResultActions response = mockMvc.perform(get('/personalHobbies/search/findByHobbyName?hobbyName=running'))
 
         then:
         response.andExpect(status().isOk())
@@ -74,11 +83,20 @@ class ApiDocumentationPersonalHobby extends Specification {
 
     void 'get personal hobby/hobbies by hobby id'(){
         when:
-        ResultActions response = mockMvc.perform(get('/personalHobbies/search/findByHobbyId?hobbyID=1'))
+        ResultActions response = mockMvc.perform(get('/personalHobbies/search/findByHobbyId?hobbyId=3'))
 
         then:
         response.andExpect(status().isOk())
         response.andDo(document('get-personalhobbies-by-hobbyid'))
+    }
+
+    void 'get personal hobby/hobbies by person id'(){
+        when:
+        ResultActions response = mockMvc.perform(get('/personalHobbies/search/findByPersonId?personId=1'))
+
+        then:
+        response.andExpect(status().isOk())
+        response.andDo(document('get-personalhobbies-by-personid'))
     }
 
 }

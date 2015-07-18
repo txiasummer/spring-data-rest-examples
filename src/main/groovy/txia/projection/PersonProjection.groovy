@@ -1,6 +1,6 @@
-package hello.projection
+package txia.projection
 
-import hello.domain.Person
+import txia.domain.Person
 import org.springframework.data.rest.core.config.Projection
 
 @Projection(name = 'personDetails', types = Person)

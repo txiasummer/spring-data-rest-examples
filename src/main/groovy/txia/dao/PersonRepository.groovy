@@ -1,6 +1,6 @@
-package hello.dao
+package txia.dao
 
-import hello.domain.Person
+import txia.domain.Person
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import org.springframework.data.rest.core.annotation.RepositoryRestResource

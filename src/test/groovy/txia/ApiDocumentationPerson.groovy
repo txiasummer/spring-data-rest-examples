@@ -1,7 +1,7 @@
-package hello
+package txia
 
-import hello.dao.PersonRepository
-import hello.domain.Person
+import txia.dao.PersonRepository
+import txia.domain.Person
 import org.springframework.boot.test.ConfigFileApplicationContextInitializer
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration

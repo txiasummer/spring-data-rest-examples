@@ -1,6 +1,6 @@
-package hello.projection
+package txia.projection
 
-import hello.domain.PersonalHobby
+import txia.domain.PersonalHobby
 import org.springframework.data.rest.core.config.Projection
 
 @Projection(name = 'personalHobbyDetails', types = PersonalHobby)

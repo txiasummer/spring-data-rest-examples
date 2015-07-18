@@ -1,6 +1,6 @@
-package hello.dao
+package txia.dao
 
-import hello.domain.PersonalHobby
+import txia.domain.PersonalHobby
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param

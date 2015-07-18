@@ -1,4 +1,4 @@
-package hello.domain
+package txia.domain
 
 import groovy.transform.Canonical
 
@@ -9,11 +9,10 @@ import javax.persistence.Id
 
 @Entity
 @Canonical
-public class Person {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id
-	String firstName
-	String lastName
-    Integer age
+class Hobby {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id
+    String name
+    String description
 }

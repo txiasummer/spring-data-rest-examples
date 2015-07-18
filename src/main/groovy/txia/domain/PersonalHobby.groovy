@@ -1,4 +1,4 @@
-package hello.domain
+package txia.domain
 
 import groovy.transform.Canonical
 

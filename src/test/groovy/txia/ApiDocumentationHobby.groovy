@@ -1,7 +1,7 @@
-package hello
+package txia
 
-import hello.dao.HobbyRepository
-import hello.domain.Hobby
+import txia.dao.HobbyRepository
+import txia.domain.Hobby
 import org.springframework.boot.test.ConfigFileApplicationContextInitializer
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration

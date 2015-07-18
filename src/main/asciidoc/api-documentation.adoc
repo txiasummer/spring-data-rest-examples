@@ -86,6 +86,17 @@ include::{generated}/get-all-personalhobbies/curl-request.adoc[]
 include::{generated}/get-all-personalhobbies/http-response.adoc[]
 
 
+[[get-all-personalhobbies-with-details]]
+=== List all personal hobbies with details
+Retrieves all personal hobbies with details
+
+==== Example request
+include::{generated}/get-all-personalhobbies-with-details/curl-request.adoc[]
+
+==== Example response
+include::{generated}/get-all-personalhobbies-with-details/http-response.adoc[]
+
+
 [[get-personalhobbies-by-name]]
 === Get personal hobby/hobbies by its name
 Retrieves personal hobby/hobbies by its name

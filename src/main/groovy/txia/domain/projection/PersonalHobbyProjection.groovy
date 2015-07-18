@@ -1,4 +1,4 @@
-package txia.projection
+package txia.domain.projection
 
 import txia.domain.PersonalHobby
 import org.springframework.data.rest.core.config.Projection

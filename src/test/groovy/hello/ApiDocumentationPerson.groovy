@@ -32,13 +32,13 @@ class ApiDocumentationPerson extends Specification {
 
     void setup(){
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration()).build();
-        Person person1 = new Person(id: 1, firstName: 'Chewbacca', lastName: 'Xia', age: 12)
-        Person person2 = new Person(id: 2, firstName: 'Furrs', lastName: 'Xia', age: 14)
-        Person person3 = new Person(id: 3, firstName: 'Jameson', lastName: 'Parente', age: 7)
-        Person person4 = new Person(id: 4, firstName: 'Milli', lastName: 'Brewer', age: 27)
-        Person person5 = new Person(id: 5, firstName: 'Hooch', lastName: 'Brewer', age: 34)
-
-        personRepository.save([person1, person2, person3, person4, person5])
+        personRepository.save([
+                new Person(id: 1, firstName: 'Chewbacca', lastName: 'Xia', age: 12),
+                new Person(id: 2, firstName: 'Furrs', lastName: 'Xia', age: 14),
+                new Person(id: 3, firstName: 'Jameson', lastName: 'Parente', age: 7),
+                new Person(id: 4, firstName: 'Milli', lastName: 'Brewer', age: 27),
+                new Person(id: 5, firstName: 'Hooch', lastName: 'Brewer', age: 34)
+        ])
     }
 
     void 'get all persons'(){

@@ -32,12 +32,12 @@ class ApiDocumentationHobby extends Specification {
 
     void setup(){
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration()).build();
-
-        Hobby hobby1 = new Hobby(id: 1, name: 'piano', description: 'playing the piano')
-        Hobby hobby2 = new Hobby(id: 2, name: 'running', description: 'running')
-        Hobby hobby3 = new Hobby(id: 3, name: 'reading', description: 'reading literature')
-        Hobby hobby4 = new Hobby(id: 4, name: 'soccer', description: 'playing soccer')
-        hobbyRepository.save([hobby1, hobby2, hobby3, hobby4])
+        hobbyRepository.save([
+                new Hobby(id: 1, name: 'piano', description: 'playing the piano'),
+                new Hobby(id: 2, name: 'running', description: 'running'),
+                new Hobby(id: 3, name: 'reading', description: 'reading literature'),
+                new Hobby(id: 4, name: 'soccer', description: 'playing soccer')
+        ])
     }
 
     void 'get specific hobby by id'(){

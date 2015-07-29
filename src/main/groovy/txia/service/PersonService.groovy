@@ -1,5 +1,7 @@
 package txia.service
 
+import txia.domain.Person
+
 interface PersonService {
-    Boolean isAdult(Integer age)
+    Boolean isAdult(Person person)
 }

@@ -18,8 +18,8 @@ class PersonServiceSpec extends Specification {
 
     void 'determine whether person is adult by age'(){
         expect:
-        service.isAdult(oldPerson.age)
-        service.isAdult(youngPerson.age)
-        !service.isAdult(child.age)
+        service.isAdult(oldPerson)
+        service.isAdult(youngPerson)
+        !service.isAdult(child)
     }
 }

@@ -12,7 +12,7 @@ import txia.service.PersonService
 @Slf4j
 @Component
 class PersonProcessor implements ResourceProcessor<Resource<Person>>{
-    //TODO: the processor is not working!! no error message, but the "isAdult" property does not get calculated
+    //TODO: the processor is not working!! no error message, but the "isAdult" property does not get calculated. Don't think the processor ever gets called
 
     @Autowired
     PersonService personService

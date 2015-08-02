@@ -1,10 +1,10 @@
 package txia.dao
 
-import txia.domain.Person
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
 import org.springframework.stereotype.Repository
+import txia.domain.Person
 
 @Repository
 @RepositoryRestResource(collectionResourceRel='people', path='people')

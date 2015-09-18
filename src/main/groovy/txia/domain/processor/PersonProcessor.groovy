@@ -12,7 +12,6 @@ import txia.service.PersonService
 @Slf4j
 @Component
 class PersonProcessor implements ResourceProcessor<Resource<Person>>{
-    //TODO: the processor is not working!! no error message, but the "isAdult" property does not get calculated. Don't think the processor ever gets called
 
     @Autowired
     PersonService personService
@@ -21,10 +20,10 @@ class PersonProcessor implements ResourceProcessor<Resource<Person>>{
     public Resource<Person> process(Resource<Person> resource) {
         resource.content.isAdult = personService.isAdult(resource.content)
 
-        // sanity check: does this link get added?? (NOPE!!)
-        resource.add(new Link("http://localhost:8080/people", "added-link"))
+        //you can add a custom hyperlink
+        resource.add(new Link('http://docs.spring.io/spring-data/rest/docs/current/reference/html/', 'added-link'))
 
-        log.info "@@ resource.content.isAdult ==> ${resource.content}"
+        log.info '@@ resource.content.isAdult ==> ${resource.content}'
 
         return resource
     }

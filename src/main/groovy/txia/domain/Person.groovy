@@ -1,5 +1,6 @@
 package txia.domain
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.Canonical
 
@@ -22,6 +23,11 @@ public class Person {
 	String lastName
 
     Integer age
+
+	String username
+
+	@JsonIgnore
+	String password
 
 	@Transient
 	@JsonProperty('isAdult')

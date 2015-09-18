@@ -1,5 +1,6 @@
 package txia.domain.projection
 
+import org.springframework.beans.factory.annotation.Value
 import txia.domain.PersonalHobby
 import org.springframework.data.rest.core.config.Projection
 
@@ -7,4 +8,7 @@ import org.springframework.data.rest.core.config.Projection
 interface PersonalHobbyProjection {
     PersonProjection getPerson()
     HobbyProjection getHobby()
+
+    @Value('#{target.id}')
+    Long getId()
 }

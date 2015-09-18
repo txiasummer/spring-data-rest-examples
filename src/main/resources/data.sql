@@ -1,17 +1,17 @@
 
 /*** Person ***/
 delete from person;
-insert into person(id, first_name, last_name, age)
-values(100, 'Mickey', 'Mouse', 21);
+insert into person(id, first_name, last_name, age, username, password)
+values(100, 'Mickey', 'Mouse', 21, 'username100', 'password100');
 
-insert into person(id, first_name, last_name, age)
-values(101, 'Minnie', 'Mouse', 19);
+insert into person(id, first_name, last_name, age, username, password)
+values(101, 'Minnie', 'Mouse', 19, 'username101', 'password101');
 
-insert into person(id, first_name, last_name, age)
-values(102, 'Donald', 'Duck', 29);
+insert into person(id, first_name, last_name, age, username, password)
+values(102, 'Donald', 'Duck', 29, 'username102', 'password102');
 
-insert into person(id, first_name, last_name, age)
-values(103, 'Daisy', 'Duck', 26);
+insert into person(id, first_name, last_name, age, username, password)
+values(103, 'Daisy', 'Duck', 26, 'username103', 'password103');
 
 /*** Hobby ***/
 delete from hobby;

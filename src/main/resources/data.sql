@@ -40,3 +40,16 @@ values(104, 102, 100);
 
 insert into personal_hobby(id, person_id, hobby_id)
 values(105, 103, 101);
+
+/*** Address ***/
+insert into address(id, address_line_one, address_line_two, city, state, zip_code, person_id)
+values(100, '8105 Fairy Lane', 'Apt 103', 'Alexandria', 'VA', '22309', 100);
+
+insert into address(id, address_line_one, address_line_two, city, state, zip_code, person_id)
+values(101, '789 Magic Drive', null, 'Honolulu', 'MI', '98786', 101);
+
+insert into address(id, address_line_one, address_line_two, city, state, zip_code, person_id)
+values(102, '345 Narnia Circle', 'Apt 2109', 'Detroit', 'MI', '12345', 102);
+
+insert into address(id, address_line_one, address_line_two, city, state, zip_code, person_id)
+values(103, '1378 Landmark Parkway', null, 'Denvor', 'CO', '67876', 103);

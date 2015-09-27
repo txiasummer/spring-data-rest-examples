@@ -26,7 +26,7 @@ public class Person {
 
 	String username
 
-	@JsonIgnore
+//	@JsonIgnore
 	String password
 
 	@Transient

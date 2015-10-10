@@ -1,4 +1,4 @@
-package txia.domain
+package txia.domain.entity
 
 import groovy.transform.Canonical
 
@@ -41,3 +41,4 @@ class Address {
     @JoinColumn(name='person_id')
     Person person
 }
+

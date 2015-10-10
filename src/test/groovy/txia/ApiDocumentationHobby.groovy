@@ -1,7 +1,7 @@
 package txia
 
 import txia.dao.HobbyRepository
-import txia.domain.Hobby
+import txia.domain.entity.Hobby
 import org.springframework.boot.test.ConfigFileApplicationContextInitializer
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration
@@ -28,21 +28,22 @@ class ApiDocumentationHobby extends Specification {
     @Resource
     HobbyRepository hobbyRepository
 
+    Hobby hobby1, hobby2, hobby3, hobby4
+
     MockMvc mockMvc
 
     void setup(){
+        hobby1 = new Hobby(name: 'piano', description: 'playing the piano')
+        hobby2 = new Hobby(name: 'running', description: 'running')
+        hobby3 = new Hobby(name: 'reading', description: 'reading literature')
+        hobby4 = new Hobby(name: 'soccer', description: 'playing soccer')
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration()).build();
-        hobbyRepository.save([
-                new Hobby(id: 1, name: 'piano', description: 'playing the piano'),
-                new Hobby(id: 2, name: 'running', description: 'running'),
-                new Hobby(id: 3, name: 'reading', description: 'reading literature'),
-                new Hobby(id: 4, name: 'soccer', description: 'playing soccer')
-        ])
+        hobbyRepository.save([hobby1, hobby2, hobby3, hobby4])
     }
 
     void 'get specific hobby by id'(){
         when:
-        ResultActions response = mockMvc.perform(get('/hobbies/1'))
+        ResultActions response = mockMvc.perform(get("/hobbies/${hobby1.id}"))
 
         then:
         response.andExpect(status().isOk())

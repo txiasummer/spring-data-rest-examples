@@ -3,7 +3,7 @@ package txia.dao
 import groovy.util.logging.Slf4j
 import org.springframework.data.rest.core.annotation.HandleBeforeSave
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler
-import txia.domain.Person
+import txia.domain.entity.Person
 
 @Slf4j
 @RepositoryEventHandler(Person.class)

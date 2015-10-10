@@ -1,6 +1,6 @@
 package txia.dao
 
-import txia.domain.PersonalHobby
+import txia.domain.entity.PersonalHobby
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param

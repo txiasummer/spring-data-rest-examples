@@ -1,8 +1,7 @@
-package txia
+package txia.service
 
 import spock.lang.Specification
-import txia.domain.Person
-import txia.service.PersonServiceImpl
+import txia.domain.entity.Person
 
 class PersonServiceSpec extends Specification {
     Person oldPerson, youngPerson, child

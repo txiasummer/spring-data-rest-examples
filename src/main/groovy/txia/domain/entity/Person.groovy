@@ -1,4 +1,4 @@
-package txia.domain
+package txia.domain.entity
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -43,5 +43,5 @@ public class Person {
 	* LocalDate birthDate
 	*
 	* */
-	Date birthDate
+	LocalDate birthDate
 }

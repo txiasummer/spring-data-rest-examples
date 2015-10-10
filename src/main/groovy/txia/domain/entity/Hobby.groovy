@@ -1,4 +1,4 @@
-package txia.domain
+package txia.domain.entity
 
 import groovy.transform.Canonical
 

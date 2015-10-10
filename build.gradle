@@ -34,7 +34,7 @@ repositories {
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compile 'org.codehaus.groovy:groovy-all:2.2.2'
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
     compile 'com.h2database:h2'
 
     testCompile 'org.spockframework:spock-core'

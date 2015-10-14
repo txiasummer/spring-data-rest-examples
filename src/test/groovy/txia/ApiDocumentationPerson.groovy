@@ -1,7 +1,7 @@
 package txia
 
 import txia.dao.PersonRepository
-import txia.domain.Person
+import txia.domain.entity.Person
 import org.springframework.boot.test.ConfigFileApplicationContextInitializer
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration
@@ -28,17 +28,18 @@ class ApiDocumentationPerson extends Specification {
     @Resource
     PersonRepository personRepository
 
+    Person person1, person2, person3, person4, person5
+
     MockMvc mockMvc
 
     void setup(){
+        person1 = new Person(firstName: 'Chewbacca', lastName: 'Xia', age: 12)
+        person2 = new Person(firstName: 'Furrs', lastName: 'Xia', age: 14)
+        person3 = new Person(firstName: 'Jameson', lastName: 'Parente', age: 7)
+        person4 = new Person(firstName: 'Milli', lastName: 'Brewer', age: 27)
+        person5 = new Person(firstName: 'Hooch', lastName: 'Brewer', age: 34)
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration()).build();
-        personRepository.save([
-                new Person(id: 1, firstName: 'Chewbacca', lastName: 'Xia', age: 12),
-                new Person(id: 2, firstName: 'Furrs', lastName: 'Xia', age: 14),
-                new Person(id: 3, firstName: 'Jameson', lastName: 'Parente', age: 7),
-                new Person(id: 4, firstName: 'Milli', lastName: 'Brewer', age: 27),
-                new Person(id: 5, firstName: 'Hooch', lastName: 'Brewer', age: 34)
-        ])
+        personRepository.save([person1, person2, person3, person4, person5])
     }
 
     void 'get all persons'(){
@@ -52,7 +53,7 @@ class ApiDocumentationPerson extends Specification {
 
     void 'get specific person by id'(){
         when:
-        ResultActions response = mockMvc.perform(get('/people/1'))
+        ResultActions response = mockMvc.perform(get("/people/${person3.id}"))
 
         then:
         response.andExpect(status().isOk())

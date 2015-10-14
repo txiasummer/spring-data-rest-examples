@@ -2,7 +2,7 @@ package txia.domain.projection
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.data.rest.core.config.Projection
-import txia.domain.Person
+import txia.domain.entity.Person
 
 @Projection(name = 'personDetails', types = Person)
 interface PersonProjection {

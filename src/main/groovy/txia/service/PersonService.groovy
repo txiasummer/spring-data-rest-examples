@@ -2,7 +2,7 @@ package txia.service
 
 import groovy.util.logging.Slf4j
 import org.springframework.stereotype.Service
-import txia.domain.Person
+import txia.domain.entity.Person
 
 @Slf4j
 @Service

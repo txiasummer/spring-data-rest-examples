@@ -6,7 +6,7 @@ import org.springframework.hateoas.Link
 import org.springframework.hateoas.Resource
 import org.springframework.hateoas.ResourceProcessor
 import org.springframework.stereotype.Component
-import txia.domain.Person
+import txia.domain.entity.Person
 import txia.service.PersonService
 
 @Slf4j

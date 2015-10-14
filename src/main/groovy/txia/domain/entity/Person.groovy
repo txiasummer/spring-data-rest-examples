@@ -3,14 +3,12 @@ package txia.domain.entity
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.Canonical
-import org.springframework.format.annotation.DateTimeFormat
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Transient
-import java.time.LocalDate
 
 @Entity
 @Canonical
@@ -28,7 +26,7 @@ public class Person {
 
 	String username
 
-//	@JsonIgnore
+	@JsonIgnore
 	String password
 
 	@Transient
@@ -43,5 +41,5 @@ public class Person {
 	* LocalDate birthDate
 	*
 	* */
-	LocalDate birthDate
+	Date birthDate
 }

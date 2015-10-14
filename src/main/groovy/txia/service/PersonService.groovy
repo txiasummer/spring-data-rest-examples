@@ -9,7 +9,6 @@ import txia.domain.entity.Person
 class PersonServiceImpl implements PersonService {
 
     Boolean isAdult(Person person){
-        log.info "@@ age ==> ${person.age}"
         return (person.age >= 21)
     }
 }

@@ -1,20 +1,21 @@
 package txia.dao
 
 import groovy.util.logging.Slf4j
+import org.springframework.data.rest.core.annotation.HandleBeforeCreate
 import org.springframework.data.rest.core.annotation.HandleBeforeSave
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler
+import org.springframework.stereotype.Component
 import txia.domain.entity.Person
 
+import java.time.LocalDate
+
 @Slf4j
+@Component
 @RepositoryEventHandler(Person.class)
 class PersonEventHandler {
 
-    //TODO: fix me. the EventHandler does not work. Password does not get saved
-
-    @HandleBeforeSave
+    @HandleBeforeCreate
     public void handlePersonSave(Person person){
-        log.info "@@ I am in the handlePersonSave method ==> $person"
-        person.password = person.firstName + person.lastName + person.age + 'topSecret'
+        person.password = person.username + (new LocalDate().toString())
     }
-//    {"firstName":"Randy", "lastName":"Davis", "age":33, "username":"rdavis"}
 }

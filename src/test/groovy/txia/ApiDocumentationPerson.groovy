@@ -16,6 +16,7 @@ import javax.annotation.Resource
 import static org.springframework.restdocs.RestDocumentation.document
 import static org.springframework.restdocs.RestDocumentation.documentationConfiguration
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @ContextConfiguration(classes = [Application], initializers = ConfigFileApplicationContextInitializer)
@@ -67,6 +68,17 @@ class ApiDocumentationPerson extends Specification {
         then:
         response.andExpect(status().isOk())
         response.andDo(document('person-list-by-lastname'))
+    }
+
+    //TODO: need to fix this test
+    void 'create a Person record'(){
+        when:
+        Person testPerson = new Person(firstName:'Randy', lastName:'Davis', age:33, username:'rdavis')
+        ResultActions response = mockMvc.perform(post('/people/', testPerson))
+
+        then:
+        response.andExpect(status().isOk())
+        response.andDo(document('create-person'))
     }
 
 }

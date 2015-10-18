@@ -1,5 +1,7 @@
 package txia
 
+import org.springframework.restdocs.RestDocumentation
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder
 import txia.dao.HobbyRepository
 import txia.domain.entity.Hobby
 import org.springframework.boot.test.ConfigFileApplicationContextInitializer
@@ -13,14 +15,16 @@ import spock.lang.Specification
 
 import javax.annotation.Resource
 
-import static org.springframework.restdocs.RestDocumentation.document
-import static org.springframework.restdocs.RestDocumentation.documentationConfiguration
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @ContextConfiguration(classes=[Application], initializers = ConfigFileApplicationContextInitializer)
 @WebAppConfiguration
 class ApiDocumentationHobby extends Specification {
+
+    public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets")
 
     @Resource
     WebApplicationContext context
@@ -37,25 +41,27 @@ class ApiDocumentationHobby extends Specification {
         hobby2 = new Hobby(name: 'running', description: 'running')
         hobby3 = new Hobby(name: 'reading', description: 'reading literature')
         hobby4 = new Hobby(name: 'soccer', description: 'playing soccer')
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration()).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration(this.restDocumentation)).build();
+
         hobbyRepository.save([hobby1, hobby2, hobby3, hobby4])
     }
 
     void 'get specific hobby by id'(){
         when:
-        ResultActions response = mockMvc.perform(get("/hobbies/${hobby1.id}"))
+        MockHttpServletRequestBuilder builder = get("/hobbies")
+        ResultActions response = this.mockMvc.perform(builder)
 
         then:
         response.andExpect(status().isOk())
-        response.andDo(document('get-hobby-by-id'))
+        response.anDo(document('get-hobby-by-id'))
     }
-
-    void 'get hobby/hobbies by name'(){
-        when:
-        ResultActions response = mockMvc.perform(get('/hobbies/search/findByName?name=piano'))
-
-        then:
-        response.andExpect(status().isOk())
-        response.andDo(document('get-hobbies-by-name'))
-    }
+//
+//    void 'get hobby/hobbies by name'(){
+//        when:
+//        ResultActions response = mockMvc.perform(get('/hobbies/search/findByName?name=piano'))
+//
+//        then:
+//        response.andExpect(status().isOk())
+//        response.andDo(document('get-hobbies-by-name'))
+//    }
 }

@@ -1,5 +1,7 @@
 package txia
 
+import org.junit.Rule
+import org.springframework.restdocs.RestDocumentation
 import txia.dao.HobbyRepository
 import txia.dao.PersonRepository
 import txia.dao.PersonalHobbyRepository
@@ -17,14 +19,17 @@ import spock.lang.Specification
 
 import javax.annotation.Resource
 
-import static org.springframework.restdocs.RestDocumentation.document
-import static org.springframework.restdocs.RestDocumentation.documentationConfiguration
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @ContextConfiguration(classes=[Application], initializers = ConfigFileApplicationContextInitializer)
 @WebAppConfiguration
 class ApiDocumentationPersonalHobby extends Specification {
+
+    @Rule
+    public final RestDocumentation restDocumentation = new RestDocumentation("build/generated-snippets")
 
     @Resource
     WebApplicationContext context
@@ -45,7 +50,7 @@ class ApiDocumentationPersonalHobby extends Specification {
     MockMvc mockMvc
 
     void setup(){
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration()).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration(this.restDocumentation)).build();
 
         person1 = new Person(firstName: 'Chewbacca', lastName: 'Xia', age: 12)
         person2 = new Person(firstName: 'Furrs', lastName: 'Xia', age: 14)
@@ -69,7 +74,7 @@ class ApiDocumentationPersonalHobby extends Specification {
 
     void 'get all personal hobbies'(){
         when:
-        ResultActions response = mockMvc.perform(get('/personalHobbies'))
+        ResultActions response = this.mockMvc.perform(get('/personalHobbies'))
 
         then:
         response.andExpect(status().isOk())
@@ -78,7 +83,7 @@ class ApiDocumentationPersonalHobby extends Specification {
 
     void 'get all personal hobbies with details'(){
         when:
-        ResultActions response = mockMvc.perform(get('/personalHobbies?projection=personalHobbyDetails'))
+        ResultActions response = this.mockMvc.perform(get('/personalHobbies?projection=personalHobbyDetails'))
 
         then:
         response.andExpect(status().isOk())
@@ -87,7 +92,7 @@ class ApiDocumentationPersonalHobby extends Specification {
 
     void 'get personal hobby/hobbies by hobby name'(){
         when:
-        ResultActions response = mockMvc.perform(get('/personalHobbies/search/findByHobbyName?hobbyName=running'))
+        ResultActions response = this.mockMvc.perform(get('/personalHobbies/search/findByHobbyName?hobbyName=running'))
 
         then:
         response.andExpect(status().isOk())
@@ -96,7 +101,7 @@ class ApiDocumentationPersonalHobby extends Specification {
 
     void 'get personal hobby/hobbies by hobby id'(){
         when:
-        ResultActions response = mockMvc.perform(get("/personalHobbies/search/findByHobbyId?hobbyId=${hobby3.id}"))
+        ResultActions response = this.mockMvc.perform(get("/personalHobbies/search/findByHobbyId?hobbyId=${hobby3.id}"))
 
         then:
         response.andExpect(status().isOk())
@@ -105,7 +110,7 @@ class ApiDocumentationPersonalHobby extends Specification {
 
     void 'get personal hobby/hobbies by person id'(){
         when:
-        ResultActions response = mockMvc.perform(get("/personalHobbies/search/findByPersonId?personId=${person1.id}"))
+        ResultActions response = this.mockMvc.perform(get("/personalHobbies/search/findByPersonId?personId=${person1.id}"))
 
         then:
         response.andExpect(status().isOk())

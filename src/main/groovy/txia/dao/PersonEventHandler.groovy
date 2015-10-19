@@ -16,6 +16,6 @@ class PersonEventHandler {
 
     @HandleBeforeCreate
     public void handlePersonSave(Person person){
-        person.password = person.username + (new LocalDate().toString())
+        person.password = person.username + (new LocalDate(2015,10,15).toString())
     }
 }

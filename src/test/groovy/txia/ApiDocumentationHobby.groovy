@@ -1,5 +1,8 @@
 package txia
 
+import org.junit.Rule
+import org.springframework.http.MediaType
+import org.springframework.restdocs.RestDocumentation
 import txia.dao.HobbyRepository
 import txia.domain.entity.Hobby
 import org.springframework.boot.test.ConfigFileApplicationContextInitializer
@@ -13,14 +16,17 @@ import spock.lang.Specification
 
 import javax.annotation.Resource
 
-import static org.springframework.restdocs.RestDocumentation.document
-import static org.springframework.restdocs.RestDocumentation.documentationConfiguration
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @ContextConfiguration(classes=[Application], initializers = ConfigFileApplicationContextInitializer)
 @WebAppConfiguration
 class ApiDocumentationHobby extends Specification {
+
+    @Rule
+    public final RestDocumentation restDocumentation = new RestDocumentation('build/generated-snippets')
 
     @Resource
     WebApplicationContext context
@@ -37,13 +43,14 @@ class ApiDocumentationHobby extends Specification {
         hobby2 = new Hobby(name: 'running', description: 'running')
         hobby3 = new Hobby(name: 'reading', description: 'reading literature')
         hobby4 = new Hobby(name: 'soccer', description: 'playing soccer')
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration()).build();
         hobbyRepository.save([hobby1, hobby2, hobby3, hobby4])
+
+        mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration(this.restDocumentation)).build()
     }
 
     void 'get specific hobby by id'(){
         when:
-        ResultActions response = mockMvc.perform(get("/hobbies/${hobby1.id}"))
+        ResultActions response = this.mockMvc.perform(get('/hobbies').accept(MediaType.APPLICATION_JSON))
 
         then:
         response.andExpect(status().isOk())
@@ -52,7 +59,7 @@ class ApiDocumentationHobby extends Specification {
 
     void 'get hobby/hobbies by name'(){
         when:
-        ResultActions response = mockMvc.perform(get('/hobbies/search/findByName?name=piano'))
+        ResultActions response = mockMvc.perform(get('/hobbies/search/findByName?name=piano').accept(MediaType.APPLICATION_JSON))
 
         then:
         response.andExpect(status().isOk())

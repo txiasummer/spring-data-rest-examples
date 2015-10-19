@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE'
     }
 }
 
@@ -17,7 +17,7 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'spring-jpa-rest-service'
-    version = '0.1.0'
+    version = '1.0'
 
     dependsOn asciidoctor
     from ("${asciidoctor.outputDir}/html5") {
@@ -63,5 +63,5 @@ asciidoctor {
 task stage(dependsOn: ['bootRepackage'])
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.7'
 }

@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ApiDocumentationPersonalHobby extends Specification {
 
     @Rule
-    public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets")
+    public final RestDocumentation restDocumentation = new RestDocumentation("build/generated-snippets")
 
     @Resource
     WebApplicationContext context

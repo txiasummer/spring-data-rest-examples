@@ -10,3 +10,5 @@ This is an Example Web Service project using the following cool features
 * Projection
 * Excerpt (which is a projection that is applied to a resource collection automatically)
 * ResourceProcessor
+* EventHandler
+* Configure CascadeDelete in JPA entities (Example: Hobby.groovy)

@@ -2,7 +2,6 @@ package txia.domain.entity
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
-import groovy.transform.Canonical
 
 import javax.persistence.CascadeType
 import javax.persistence.Entity
@@ -14,7 +13,10 @@ import javax.persistence.OneToMany
 import javax.persistence.Transient
 
 @Entity
-@Canonical
+/*
+    TODO: when I have the @Canonical tag here, the APIDocumentation tests throw the StackOverFlow error due to recursive calls to the toString() method. Need to fix that
+    the actual API calls (when tested in POSTMAN does not throw errors). it is a problem with the RestAPI documentation plugin
+ */
 public class Person {
 
 	@Id

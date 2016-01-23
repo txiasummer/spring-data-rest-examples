@@ -1,16 +1,16 @@
 package txia.domain.entity
 
-import groovy.transform.Canonical
-
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
-import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
 @Entity
-@Canonical
+/*
+    TODO: when I have the @Canonical tag here, the APIDocumentation tests throw the StackOverFlow error due to recursive calls to the toString() method. Need to fix that
+    the actual API calls (when tested in POSTMAN does not throw errors). it is a problem with the RestAPI documentation plugin
+ */
 class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,11 +34,9 @@ class Address {
 
     AddressType addressType
     */
-
     String addressType
 
     @ManyToOne
-    @JoinColumn(name='person_id')
     Person person
 }
 

@@ -3,7 +3,6 @@ package txia
 import org.junit.Rule
 import org.springframework.http.MediaType
 import org.springframework.restdocs.RestDocumentation
-import sun.security.tools.keytool.Resources_es
 import txia.dao.PersonRepository
 import txia.domain.entity.Person
 import org.springframework.boot.test.ConfigFileApplicationContextInitializer

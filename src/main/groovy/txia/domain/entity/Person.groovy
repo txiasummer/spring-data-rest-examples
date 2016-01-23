@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.Canonical
 
+import javax.persistence.CascadeType
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.OneToMany
 import javax.persistence.Transient
 
 @Entity
@@ -42,4 +45,10 @@ public class Person {
 	*
 	* */
 	Date birthDate
+
+	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = 'person', cascade = CascadeType.REMOVE)
+	List<Address> addresses
+
+	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = 'person', cascade = CascadeType.REMOVE)
+	List<PersonalHobby> personalHobbies
 }

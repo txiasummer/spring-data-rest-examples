@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository
 import txia.domain.projection.PersonalHobbyProjection
 
 @Repository
-@RepositoryRestResource(excerptProjection=PersonalHobbyProjection, collectionResourceRel='personalHobbies', path='personalHobbies')
+//TODO: having the "excerptProjection=PersonalHobbyProjection" causes the cascade deletes to fail. Need to fix this
+@RepositoryRestResource(collectionResourceRel='personalHobbies', path='personalHobbies')
 interface PersonalHobbyRepository extends PagingAndSortingRepository<PersonalHobby, Long>{
 
     @Query("from PersonalHobby where person.id = :personId")
